@@ -1,10 +1,12 @@
-import Image from "next/image";
 import { Product } from '../../interfaces/products/Product';
+import { useRouter } from "next/router";
 
 const ProductCard: React.FC<Product> | any = ({ product }: any) => {
+  const router = useRouter()
+
   return (
-    <div className="cursor-pointer py-2.5 ">
-      <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div className="cursor-pointer py-2.5">
+      <div onClick={() => router.push(`/${product.slug}`)} className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700  max-h-80">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
           src={product.image}
